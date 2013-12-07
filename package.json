@@ -1,0 +1,27 @@
+{
+	"name":         "chuey",
+	"description":  "a client library for the Philips Hue API",
+	"keywords":     [ "hue", "philips", "lights" ],
+	"version":      "0.0.1",
+	"author":       "C J Silverio <ceejceej@gmail.com>",
+	"repository":   { "type": "git", "url": "git://github.com/ceejbot/chuey.git" },
+	"homepage":     "https://github.com/ceejbot/chuey",
+	"bugs":         { "url": "https://github.com/ceejbot/chuey/issues"},
+	"license":      "MIT",
+	"main":         "index.js",
+	"dependencies":
+	{
+		"p-promise": "~0.2.5",
+		"lodash":    "~2.4.1",
+		"request":   "~2.29.0"
+	},
+	"devDependencies":
+	{
+		"must": "~0.10.0",
+		"mocha": "~1.15.1"
+	},
+	"scripts":
+	{
+		"test": "mocha -R spec test/test*.js"
+	}
+}
