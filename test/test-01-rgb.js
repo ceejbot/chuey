@@ -2,7 +2,7 @@
 
 var demand = require('must');
 
-describe('chuey', function()
+describe('rgb converter', function()
 {
 	it('has tests.');
-})
+});

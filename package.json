@@ -11,6 +11,7 @@
 	"main":         "index.js",
 	"dependencies":
 	{
+		"async":     "~0.2.9",
 		"p-promise": "~0.2.5",
 		"lodash":    "~2.4.1",
 		"request":   "~2.29.0"
