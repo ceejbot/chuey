@@ -18,8 +18,9 @@
 	},
 	"devDependencies":
 	{
-		"must": "~0.10.0",
-		"mocha": "~1.15.1"
+		"must":  "~0.10.0",
+		"mocha": "~1.15.1",
+		"sinon": "~1.7.3"
 	},
 	"scripts":
 	{

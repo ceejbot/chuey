@@ -16,7 +16,7 @@ describe('rgb converter', function()
 	{
 		function shouldThrow() { return rgb2hsv(1, 'green', 2); }
 		shouldThrow.must.throw(/number/);
-	})
+	});
 
 	it('returns an object with hue, saturation, value fields', function()
 	{
@@ -30,7 +30,7 @@ describe('rgb converter', function()
 		result.value.must.be.a.number();
 	});
 
-	it('returns black for black', function()
+	it('converts black', function()
 	{
 		var result = rgb2hsv(0, 0, 0);
 		result.hue.must.equal(0);
@@ -38,7 +38,7 @@ describe('rgb converter', function()
 		result.value.must.equal(0);
 	});
 
-	it('returns white for white', function()
+	it('converts white', function()
 	{
 		var result = rgb2hsv(255, 255, 255);
 		result.hue.must.equal(0);
@@ -46,7 +46,7 @@ describe('rgb converter', function()
 		result.value.must.equal(100);
 	});
 
-	it('returns gray for gray', function()
+	it('converts gray', function()
 	{
 		var result = rgb2hsv(127, 127, 127);
 		result.hue.must.equal(0);
@@ -54,7 +54,7 @@ describe('rgb converter', function()
 		result.value.must.equal(50);
 	});
 
-	it('returns red for red', function()
+	it('converts red', function()
 	{
 		var result = rgb2hsv(255, 0, 0);
 		result.hue.must.equal(0);
@@ -62,7 +62,7 @@ describe('rgb converter', function()
 		result.value.must.equal(100);
 	});
 
-	it('dark red', function()
+	it('converts dark red', function()
 	{
 		var result = rgb2hsv(128, 0, 0);
 		result.hue.must.equal(0);
@@ -70,7 +70,7 @@ describe('rgb converter', function()
 		result.value.must.equal(50);
 	});
 
-	it('returns green for green', function()
+	it('converts green', function()
 	{
 		var result = rgb2hsv(0, 255, 0);
 		result.hue.must.equal(120);
@@ -78,7 +78,7 @@ describe('rgb converter', function()
 		result.value.must.equal(100);
 	});
 
-	it('returns blue for blue', function()
+	it('converts blue', function()
 	{
 		var result = rgb2hsv(0, 0, 255);
 		result.hue.must.equal(240);
@@ -86,7 +86,7 @@ describe('rgb converter', function()
 		result.value.must.equal(100);
 	});
 
-	it('does the right thing with a random green', function()
+	it('converts a random green', function()
 	{
 		var result = rgb2hsv(144, 169, 89);
 		result.hue.must.equal(79);

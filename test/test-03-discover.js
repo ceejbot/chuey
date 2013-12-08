@@ -4,5 +4,6 @@ var demand = require('must');
 
 describe('discovery', function()
 {
-	it('has tests.');
+	it('successfully discovers existing bridges');
+	it('terminates its search if there are no bridges');
 });

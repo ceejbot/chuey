@@ -11,6 +11,8 @@ Unit tests + integration tests.
 
 Get rid of the dependency on `async`.
 
+Make a PR to [hue-cli](https://github.com/bahamas10/hue-cli) switching over to this module.
+
 ## Credits
 
 This library started life as [hue.js](https://github.com/thatguydan/hue.js) by [Daniel Friedman](https://github.com/thatguydan).
