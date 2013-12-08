@@ -9,9 +9,23 @@ describe('Chuey', function()
 {
 	describe('constructor', function()
 	{
-		it('throws if you fail to pass `options`');
-		it('throws if you fail to pass `options.stationIp`');
-		it('throws if you fail to pass `options.appName`');
+		it('throws if you fail to pass `options`', function()
+		{
+			function shouldThrow() { return new Chuey(); }
+			shouldThrow.must.throw(/options/);
+		});
+
+		it('throws if you fail to pass `options.stationIp`', function()
+		{
+			function shouldThrow() { return new Chuey({}); }
+			shouldThrow.must.throw(/stationIp/);
+		});
+
+		it('throws if you fail to pass `options.appName`', function()
+		{
+			function shouldThrow() { return new Chuey({ stationIp: '10.0.0.1' }); }
+			shouldThrow.must.throw(/appName/);
+		});
 
 		it('can be constructed', function()
 		{
@@ -43,7 +57,7 @@ describe('Chuey', function()
 		{
 			var result = client.makeURI();
 			result.must.match(/^http:\/\//);
-
+			result.must.match(/\/api\//);
 		});
 
 		it('can accept a single argument', function()
@@ -62,9 +76,9 @@ describe('Chuey', function()
 
 	describe('lights', function()
 	{
-		it('has tests.');
 		it('invokes callbacks when provided');
 		it('returns a promise');
+		it('returns a list of lights');
 	});
 
 	describe('light', function()
@@ -72,6 +86,7 @@ describe('Chuey', function()
 		it('throws if you fail to pass a `light`');
 		it('invokes callbacks when provided');
 		it('returns a promise');
+		it('responds with light details');
 	});
 
 	describe('rename', function()
@@ -96,15 +111,16 @@ describe('Chuey', function()
 			shouldThrow.must.throw(/name/);
 		});
 
-		it('invokes callbacks when provided', function()
-		{
-
-		});
+		it('invokes callbacks when provided');
 
 		it('returns a promise', function()
 		{
-			// var p =
+			var p = client.rename(1, 'fred');
+			p.must.have.property('then');
+			p.then.must.be.a.function();
 		});
+
+		it('renames a light');
 	});
 
 	describe('state', function()
