@@ -2,11 +2,34 @@
 
 var
 	demand = require('must'),
+	http   = require('http'),
+	sinon  = require('sinon'),
 	Chuey  = require('../lib/chuey')
 	;
 
 describe('Chuey', function()
 {
+	before(function(done)
+	{
+		server = http.createServer(function(request, response)
+		{
+			// console.log(request.url);
+			switch (request.url)
+			{
+			case 'description.xml':
+				response.end('Philips hue bridge');
+				break;
+
+			default:
+				response.end('');
+				break;
+			}
+
+		});
+		server.on('listening', done);
+		server.listen(1900);
+	});
+
 	describe('constructor', function()
 	{
 		it('throws if you fail to pass `options`', function()
@@ -31,7 +54,7 @@ describe('Chuey', function()
 		{
 			var opts =
 			{
-				stationIp: '10.0.0.1',
+				stationIp: 'localhost',
 				appName:   'test-client'
 			};
 			var client = new Chuey(opts);
@@ -48,7 +71,7 @@ describe('Chuey', function()
 	{
 		var opts =
 		{
-			stationIp: '10.0.0.1',
+			stationIp: 'localhost',
 			appName:   'test-client'
 		};
 		var client = new Chuey(opts);
@@ -83,7 +106,19 @@ describe('Chuey', function()
 
 	describe('light', function()
 	{
-		it('throws if you fail to pass a `light`');
+		var opts =
+		{
+			stationIp: 'localhost:1900',
+			appName:   'test-client'
+		};
+		var client = new Chuey(opts);
+
+		it('throws if you fail to pass a `light`', function()
+		{
+			function shouldThrow() { client.light(); }
+			shouldThrow.must.throw(/light/);
+		});
+
 		it('invokes callbacks when provided');
 		it('returns a promise');
 		it('responds with light details');
@@ -93,11 +128,10 @@ describe('Chuey', function()
 	{
 		var opts =
 		{
-			stationIp: '10.0.0.1',
+			stationIp: 'localhost:1900',
 			appName:   'test-client'
 		};
 		var client = new Chuey(opts);
-		// mock client.execute
 
 		it('throws if you fail to pass a `light`', function()
 		{
@@ -111,7 +145,14 @@ describe('Chuey', function()
 			shouldThrow.must.throw(/name/);
 		});
 
-		it('invokes callbacks when provided');
+		it('invokes callbacks when provided', function(done)
+		{
+			client.rename(1, 'fred', function(err, res)
+			{
+				demand(err).not.exist();
+				done();
+			});
+		});
 
 		it('returns a promise', function()
 		{
@@ -164,7 +205,5 @@ describe('Chuey', function()
 		it('invokes callbacks when provided');
 		it('returns a promise');
 	});
-
-
 
 });
