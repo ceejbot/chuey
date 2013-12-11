@@ -6,3 +6,4 @@ exports.createClient = function(opts)
 };
 
 exports.Chuey = Chuey;
+exports.discover = require('./lib/discover');
