@@ -14,5 +14,15 @@ describe('discovery', function()
 
 
 	it('successfully discovers existing bridges');
-	it('terminates its search if there are no bridges');
+
+	it('terminates its search if there are no bridges', function(done)
+	{
+		// Not sure how to mock this yet.
+		this.timeout(10000);
+
+		discover(function(result)
+		{
+			done();
+		});
+	});
 });

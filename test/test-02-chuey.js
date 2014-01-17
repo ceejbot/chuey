@@ -13,16 +13,19 @@ describe('Chuey', function()
 	{
 		server = http.createServer(function(request, response)
 		{
-			// console.log(request.url);
-			switch (request.url)
-			{
-			case 'description.xml':
+			if (request.url === 'description.xml')
 				response.end('Philips hue bridge');
-				break;
-
-			default:
+			else if (request.url.match(/\/lights$/))
+			{
+				response.status = 200;
+				response.setHeader('content-type', 'application/json');
+				response.end(JSON.stringify({ "1": { name: "Ceej-office-1" },"2": { name: "Ceej office 2" },"3": { name: "Bedroom" } }));
+			}
+			else
+			{
+				// console.log(request.url);
+				response.status = 404;
 				response.end('');
-				break;
 			}
 
 		});
@@ -99,9 +102,36 @@ describe('Chuey', function()
 
 	describe('lights', function()
 	{
-		it('invokes callbacks when provided');
-		it('returns a promise');
-		it('returns a list of lights');
+		var opts =
+		{
+			stationIp: 'localhost:1900',
+			appName:   'test-client'
+		};
+		var client = new Chuey(opts);
+
+		it('has a lights() function', function()
+		{
+			client.must.have.property('lights');
+			client.lights.must.be.a.function();
+		});
+
+		it('invokes callbacks when provided', function(done)
+		{
+			client.lights(function(err, res)
+			{
+				demand(err).not.exist();
+				res.must.be.an.object();
+				done();
+			});
+
+		});
+
+		it('returns a promise', function()
+		{
+			var p = client.lights();
+			p.must.have.property('then');
+			p.then.must.be.a.function();
+		});
 	});
 
 	describe('light', function()
