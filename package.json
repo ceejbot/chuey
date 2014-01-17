@@ -14,17 +14,25 @@
 		"async":     "~0.2.9",
 		"p-promise": "~0.2.5",
 		"lodash":    "~2.4.1",
-		"request":   "~2.29.0"
+		"request":   "~2.33.0"
 	},
 	"devDependencies":
 	{
-		"blanket":             "~1.1.5",
-		"coveralls":           "~2.6.0",
+		"blanket":             "~1.1.6",
+		"coveralls":           "~2.6.1",
 		"must":                "~0.10.0",
-		"mocha":               "~1.15.1",
+		"mocha":               "~1.17.0",
 		"mocha-lcov-reporter": "0.0.1",
 		"sinon":               "~1.7.3",
 		"travis-cov":          "~0.2.4"
+	},
+	"config":
+	{
+		"blanket":
+		{
+			"pattern": "//^((?!\/test|examples|node_modules\/).)*$/ig",
+			"onlyCwd": true
+		}
 	},
 	"scripts":
 	{
@@ -32,11 +40,6 @@
 		"test-suite": "./node_modules/.bin/mocha -R spec test/*.js",
 		"test-cov":   "./node_modules/.bin/mocha --require blanket -R travis-cov test/*.js",
 		"coveralls":  "NODE_ENV=test YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha --require blanket --reporter mocha-lcov-reporter test/*.js | ./node_modules/coveralls/bin/coveralls.js",
-		"blanket":
-		{
-			"pattern": "//^((?!\/test|examples|node_modules\/).)*$/ig",
-			"onlyCwd": true
-		},
 		"travis-cov": { "threshold": 30 }
 	}
 }
