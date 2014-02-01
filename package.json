@@ -11,20 +11,20 @@
 	"main":         "index.js",
 	"dependencies":
 	{
-		"async":     "~0.2.9",
-		"p-promise": "~0.2.5",
-		"lodash":    "~2.4.1",
-		"request":   "~2.33.0"
+		"async":     "^0.2.10",
+		"p-promise": "^0.2.5",
+		"lodash":    "^2.4.1",
+		"request":   "^2.33.0"
 	},
 	"devDependencies":
 	{
-		"blanket":             "~1.1.6",
-		"coveralls":           "~2.6.1",
-		"must":                "~0.10.0",
-		"mocha":               "~1.17.0",
-		"mocha-lcov-reporter": "0.0.1",
-		"sinon":               "~1.7.3",
-		"travis-cov":          "~0.2.4"
+		"blanket":             "^1.1.6",
+		"coveralls":           "^2.7.0",
+		"must":                "^0.10.0",
+		"mocha":               "^1.17.0",
+		"mocha-lcov-reporter": "^0.0.1",
+		"sinon":               "^1.7.3",
+		"travis-cov":          "^0.2.5"
 	},
 	"config":
 	{
@@ -32,14 +32,14 @@
 		{
 			"pattern": "//^((?!\/test|examples|node_modules\/).)*$/ig",
 			"onlyCwd": true
-		}
+		},
+		"coveralls":  "NODE_ENV=test YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha --require blanket --reporter mocha-lcov-reporter test/*.js | ./node_modules/coveralls/bin/coveralls.js",
+		"travis-cov": { "threshold": 30 }
 	},
 	"scripts":
 	{
 		"test":       "npm run test-suite && npm run coveralls && npm run test-cov",
 		"test-suite": "./node_modules/.bin/mocha -R spec test/*.js",
-		"test-cov":   "./node_modules/.bin/mocha --require blanket -R travis-cov test/*.js",
-		"coveralls":  "NODE_ENV=test YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha --require blanket --reporter mocha-lcov-reporter test/*.js | ./node_modules/coveralls/bin/coveralls.js",
-		"travis-cov": { "threshold": 30 }
+		"test-cov":   "./node_modules/.bin/mocha --require blanket -R travis-cov test/*.js"
 	}
 }
