@@ -2,7 +2,7 @@
 	"name":         "chuey",
 	"description":  "a client library for the Philips Hue API",
 	"keywords":     [ "hue", "philips", "lights" ],
-	"version":      "0.0.2",
+	"version":      "0.0.3",
 	"author":       "C J Silverio <ceejceej@gmail.com>",
 	"repository":   { "type": "git", "url": "git://github.com/ceejbot/chuey.git" },
 	"homepage":     "https://github.com/ceejbot/chuey",
@@ -19,11 +19,11 @@
 	"devDependencies":
 	{
 		"blanket":             "^1.1.6",
-		"coveralls":           "^2.7.0",
-		"must":                "^0.10.0",
+		"coveralls":           "^2.7.1",
+		"must":                "^0.11.0",
 		"mocha":               "^1.17.0",
 		"mocha-lcov-reporter": "^0.0.1",
-		"sinon":               "^1.7.3",
+		"sinon":               "^1.8.1",
 		"travis-cov":          "^0.2.5"
 	},
 	"config":
