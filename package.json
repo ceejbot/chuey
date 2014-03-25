@@ -1,45 +1,51 @@
 {
-	"name":         "chuey",
-	"description":  "a client library for the Philips Hue API",
-	"keywords":     [ "hue", "philips", "lights" ],
-	"version":      "0.0.3",
-	"author":       "C J Silverio <ceejceej@gmail.com>",
-	"repository":   { "type": "git", "url": "git://github.com/ceejbot/chuey.git" },
-	"homepage":     "https://github.com/ceejbot/chuey",
-	"bugs":         { "url": "https://github.com/ceejbot/chuey/issues"},
-	"license":      "MIT",
-	"main":         "index.js",
-	"dependencies":
-	{
-		"async":     "^0.2.10",
-		"p-promise": "^0.2.5",
-		"lodash":    "^2.4.1",
-		"request":   "^2.34.0"
-	},
-	"devDependencies":
-	{
-		"blanket":             "^1.1.6",
-		"coveralls":           "^2.10.0",
-		"must":                "^0.11.0",
-		"mocha":               "^1.18.2",
-		"mocha-lcov-reporter": "^0.0.1",
-		"sinon":               "^1.8.1",
-		"travis-cov":          "^0.2.5"
-	},
-	"config":
-	{
-		"blanket":
-		{
-			"pattern": "//^((?!\/test|examples|node_modules\/).)*$/ig",
-			"onlyCwd": true
-		},
-		"coveralls":  "NODE_ENV=test YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha --require blanket --reporter mocha-lcov-reporter test/*.js | ./node_modules/coveralls/bin/coveralls.js",
-		"travis-cov": { "threshold": 30 }
-	},
-	"scripts":
-	{
-		"test":       "npm run test-suite && npm run coveralls && npm run test-cov",
-		"test-suite": "./node_modules/.bin/mocha -R spec test/*.js",
-		"test-cov":   "./node_modules/.bin/mocha --require blanket -R travis-cov test/*.js"
-	}
+  "name": "chuey",
+  "description": "a client library for the Philips Hue API",
+  "keywords": [
+    "hue",
+    "philips",
+    "lights"
+  ],
+  "version": "0.0.4",
+  "author": "C J Silverio <ceejceej@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ceejbot/chuey.git"
+  },
+  "homepage": "https://github.com/ceejbot/chuey",
+  "bugs": {
+    "url": "https://github.com/ceejbot/chuey/issues"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^0.2.10",
+    "p-promise": "^0.2.5",
+    "lodash": "^2.4.1",
+    "request": "^2.34.0"
+  },
+  "devDependencies": {
+    "blanket": "^1.1.6",
+    "coveralls": "^2.10.0",
+    "must": "^0.11.0",
+    "mocha": "^1.18.2",
+    "mocha-lcov-reporter": "^0.0.1",
+    "sinon": "^1.8.1",
+    "travis-cov": "^0.2.5"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "//^((?!/test|examples|node_modules/).)*$/ig",
+      "onlyCwd": true
+    },
+    "coveralls": "NODE_ENV=test YOURPACKAGE_COVERAGE=1 ./node_modules/.bin/mocha --require blanket --reporter mocha-lcov-reporter test/*.js | ./node_modules/coveralls/bin/coveralls.js",
+    "travis-cov": {
+      "threshold": 30
+    }
+  },
+  "scripts": {
+    "test": "npm run test-suite && npm run coveralls && npm run test-cov",
+    "test-suite": "./node_modules/.bin/mocha -R spec test/*.js",
+    "test-cov": "./node_modules/.bin/mocha --require blanket -R travis-cov test/*.js"
+  }
 }
