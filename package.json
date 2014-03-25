@@ -14,14 +14,14 @@
 		"async":     "^0.2.10",
 		"p-promise": "^0.2.5",
 		"lodash":    "^2.4.1",
-		"request":   "^2.33.0"
+		"request":   "^2.34.0"
 	},
 	"devDependencies":
 	{
 		"blanket":             "^1.1.6",
-		"coveralls":           "^2.7.1",
+		"coveralls":           "^2.10.0",
 		"must":                "^0.11.0",
-		"mocha":               "^1.17.0",
+		"mocha":               "^1.18.2",
 		"mocha-lcov-reporter": "^0.0.1",
 		"sinon":               "^1.8.1",
 		"travis-cov":          "^0.2.5"
