@@ -156,12 +156,16 @@ describe('Chuey', function()
 
 	describe('rename', function()
 	{
-		var opts =
+		var client;
+		before(function()
 		{
-			stationIp: 'localhost:1900',
-			appName:   'test-client'
-		};
-		var client = new Chuey(opts);
+			var opts =
+			{
+				stationIp: 'localhost:1900',
+				appName:   'test-client'
+			};
+			client = new Chuey(opts);
+		});
 
 		it('throws if you fail to pass a `light`', function()
 		{
@@ -196,9 +200,25 @@ describe('Chuey', function()
 
 	describe('state', function()
 	{
+		var client;
+		before(function()
+		{
+			var opts =
+			{
+				stationIp: 'localhost:1900',
+				appName:   'test-client'
+			};
+			client = new Chuey(opts);
+		});
+
 		it('has tests.');
 		it('invokes callbacks when provided');
-		it('returns a promise');
+		it('returns a promise', function()
+		{
+			var p = client.state(1, 'fred');
+			p.must.have.property('then');
+			p.then.must.be.a.function();
+		});
 	});
 
 	describe('on', function()
